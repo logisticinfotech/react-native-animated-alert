@@ -260,7 +260,7 @@ class RNAlerter extends Component {
 }
 
 RNAlerter.propTypes = {
-  alterBGColor: PropTypes.string,
+  alertBGColor: PropTypes.string,
   alertIconVisible: PropTypes.bool,
   alertLoadingVisible: PropTypes.bool,
   alertIconSource: Image.propTypes.source,

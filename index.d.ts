@@ -11,7 +11,7 @@ export = Alert;
 
 declare namespace RNAlert {
   interface AlertProps {
-    alterBGColor?: String;
+    alertBGColor?: String;
     alertIconVisible?: Boolean;
     alertLoadingVisible?: Boolean;
     alertIconSource?: any;
