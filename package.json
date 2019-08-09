@@ -1,0 +1,40 @@
+{
+  "name": "@logisticinfotech/react-native-animated-alert",
+  "version": "1.0.0",
+  "description": "React Native Animated Alert Library",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logisticinfotech/react-native-animated-alert.git"
+  },
+  "keywords": [
+    "React Native",
+    "React Native Alert",
+    "Animated Alert",
+    "Animated",
+    "Alert",
+    "Popup"
+  ],
+  "author": "Shubham Vala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/logisticinfotech/react-native-animated-alert/issues"
+  },
+  "homepage": "https://github.com/logisticinfotech/react-native-animated-alert#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react-native-pose": "^0.9.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.13",
+    "typescript": "^3.4.3"
+  }
+}
