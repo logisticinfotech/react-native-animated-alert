@@ -8,6 +8,38 @@
 
 ### Installation and Usage
 
+#### Simple Usage
+`
+import Alert from '@logisticinfotech/react-native-animated-alert';
+`
+Below code will show and hide alert the simple alert.
+
+`
+onPressShow = () => {
+    Alert.showAlert();
+}
+
+...
+onPressHide = () => {
+    Alert.hideAlert();
+}
+
+...
+
+render(){
+    return(
+        <View>
+        ...
+            <Alert 
+                alertTitle="Title"
+                alertMessage="Message"
+            />
+        ...
+        </View>
+    )
+}
+`
+
 Please check this blog for installation and usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
 
 ![](RNAnimatedAlertIOS.gif)
