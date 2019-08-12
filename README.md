@@ -43,12 +43,12 @@ render(){
 }
 ```
 
-
+<br/>
 
 Please check this blog for detail usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
 
-
-
+<br/>
+<br/>
 
 
 ![](RNAnimatedAlertIOS.gif)
