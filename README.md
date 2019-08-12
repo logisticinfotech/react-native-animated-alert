@@ -16,12 +16,13 @@ import Alert from '@logisticinfotech/react-native-animated-alert';
 Below code will show and hide alert the simple alert.
 
 
-`
+```
 onPressShow = () => {
     Alert.showAlert();
 }
 
 ...
+
 onPressHide = () => {
     Alert.hideAlert();
 }
@@ -40,7 +41,7 @@ render(){
         </View>
     )
 }
-`
+```
 
 
 
