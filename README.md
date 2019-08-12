@@ -8,6 +8,10 @@
 
 ### Installation and Usage
 
+
+Please check this blog for detail usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
+
+
 #### Simple Usage
 `
 import Alert from '@logisticinfotech/react-native-animated-alert';
@@ -42,13 +46,6 @@ render(){
     )
 }
 ```
-
-<br/>
-
-Please check this blog for detail usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
-
-<br/>
-<br/>
 
 
 ![](RNAnimatedAlertIOS.gif)
