@@ -1,6 +1,6 @@
 {
   "name": "@logisticinfotech/react-native-animated-alert",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Native Animated Alert Library",
   "main": "index.js",
   "types": "index.d.ts",

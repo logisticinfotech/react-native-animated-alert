@@ -12,7 +12,9 @@
 `
 import Alert from '@logisticinfotech/react-native-animated-alert';
 `
+
 Below code will show and hide alert the simple alert.
+
 
 `
 onPressShow = () => {
@@ -40,7 +42,13 @@ render(){
 }
 `
 
-Please check this blog for installation and usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
+
+
+Please check this blog for detail usage [this link](https://www.logisticinfotech.com/blog/react-native-animated-alert-library/)
+
+
+
+
 
 ![](RNAnimatedAlertIOS.gif)
 ![](RNAnimatedAlterAndroid.gif)
