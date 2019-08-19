@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   alertTitleStyle: {
     fontSize: Responsive.convertFontScale('18'),
-    fontWeight: 'bold',
+    fontWeight: '900',
     color: Colors.white,
     marginVertical: Responsive.heightPercentageToDP('0.5%'),
   },

@@ -16,7 +16,7 @@ declare namespace RNAlert {
     alertLoadingVisible?: Boolean;
     alertIconSource?: any;
     alertIconSize?: Number;
-    alertIcoTintColor?: String;
+    alertIconTintColor?: String;
     alertAnimatedIcon?: Boolean;
     alertTitle?: String;
     alertTitleStyle?: StyleSheet;
@@ -32,6 +32,8 @@ declare namespace RNAlert {
     onPressAlert?: () => void;
     onPressButtonOne?: () => void;
     onPressButtonTwo?: () => void;
+    onAlertShow?: () => void;
+    onAlertHide?: () => void;
   }
 
   class Alert extends React.Component<AlertProps> {

@@ -1,5 +1,5 @@
 <p align="left">
-    <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img alt="npm version" src="https://img.shields.io/badge/npm-v1.0.0-green.svg"></a>
+    <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img alt="npm version" src="https://img.shields.io/badge/npm-v1.0.3-green.svg"></a>
     <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img src="https://img.shields.io/badge/downloads-%3E1K-yellow.svg"></a>
     <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"<><img src="https://img.shields.io/badge/license-MIT-orange.svg"></a>
 </p>
@@ -33,6 +33,16 @@ onPressHide = () => {
 
 ...
 
+onAlertShow = () => {
+    console.log(‘Alert is visible’)
+}
+
+onAlertHide = () => {
+    console.log(‘Alert is hidden’)
+}
+
+...
+
 render(){
     return(
         <View>
@@ -40,6 +50,8 @@ render(){
             <Alert 
                 alertTitle="Title"
                 alertMessage="Message"
+                onAlertShow={this.onAlertShow}
+                onAlertHide={this.onAlertHide}
             />
         ...
         </View>
@@ -60,7 +72,7 @@ render(){
 | alertLoadingVisible   | true      | `bool`                             | Show loading type alter.                                                                                                   |
 | alertIconSource       | bellIcon  | `source`                           | Change the default bell icon. This will be not display id loading is visible.                                              |
 | alertIconSize         | 24        | `number`                           | size of the alter icon.                                                                                                    |
-| alertIcoTintColor     | '#FFFFFF' | `string`                           | color of the icon if source has transparent pixel.                                                                         |
+| alertIconTintColor    | '#FFFFFF' | `string`                           | color of the icon if source has transparent pixel.                                                                         |
 | alertAnimatedIcon     | true      | `bool`                             | Icon of alert will be show animated.                                                                                       |
 | alertTitle            | ''        | `string`                           | Display title of the alter.                                                                                                |
 | alertTitleStyle       | InLibrary | `style`                            | Style of alter title display.                                                                                              |
@@ -76,4 +88,6 @@ render(){
 | onPressAlert          | () => {}  | `function`                         | Call when click on the alter.                                                                                              |
 | onPressButtonOne      | () => {}  | `function`                         | Call when button one(left button) is press.                                                                                |
 | onPressButtonTwo      | () => {}  | `function`                         | Call when button two(right button) is press if has two buttons.                                                            |
+| onAlertShow      | () => {}  | `function`                         | Call when alert is visible.                                                            |
+| onAlertHide      | () => {}  | `function`                         | Call when alert is hide.                                                            |
 

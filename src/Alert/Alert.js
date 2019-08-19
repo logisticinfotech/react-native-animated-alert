@@ -102,17 +102,31 @@ class RNAlerter extends Component {
     }
   };
 
+  static isAlertShowing = () => {
+    if (context) {
+      const { isVisible } = context.state;
+      return isVisible;
+    }
+  };
+
   onShowAlert = () => {
-    this.setState({
-      isVisible: true,
-    });
     const {
       alertAutoHide,
       alertAutoHideDuration,
       alertLoadingVisible,
       alertAnimatedIcon,
       alertButtonTitle,
+      onShowAlert,
     } = this.props;
+    this.setState(
+      {
+        isVisible: true,
+      },
+      () => {
+        if (onShowAlert) onShowAlert();
+      }
+    );
+
     if (alertAutoHide && !alertLoadingVisible && alertButtonTitle && alertButtonTitle.length <= 0) {
       if (this.interval) {
         clearInterval(this.interval);
@@ -137,9 +151,15 @@ class RNAlerter extends Component {
   };
 
   onHideAlert = () => {
-    this.setState({
-      isVisible: false,
-    });
+    const { onHideAlert } = this.props;
+    this.setState(
+      {
+        isVisible: false,
+      },
+      () => {
+        if (onHideAlert) onHideAlert();
+      }
+    );
     if (this.interval) {
       clearInterval(this.interval);
     }
@@ -156,10 +176,10 @@ class RNAlerter extends Component {
 
   //onPress Method
   onPressAlertView = () => {
-    const { onPressAlert, alertLoadingVisible, alertTapToDismiss } = this.props;
-    if (alertTapToDismiss && !alertLoadingVisible) {
+    const { onPressAlert, alertLoadingVisible, alertTapToDismiss, alertTitle } = this.props;
+    if (alertTapToDismiss && !alertLoadingVisible && alertTitle.length <= 0) {
       this.onHideAlert();
-    } else if (!alertLoadingVisible && onPressAlert) {
+    } else if (!alertLoadingVisible && alertTitle.length <= 0 && onPressAlert) {
       onPressAlert();
     }
   };
@@ -191,7 +211,7 @@ class RNAlerter extends Component {
       alertIconSource,
       alertIconSize,
       alertAnimatedIcon,
-      alertIcoTintColor,
+      alertIconTintColor,
       alertTitle,
       alertTitleStyle,
       alertMessage,
@@ -209,7 +229,7 @@ class RNAlerter extends Component {
               {alertLoadingVisible ? (
                 <ActivityIndicator
                   style={[styles.imageStyle, { width: alertIconSize }]}
-                  color={alertIcoTintColor || Colors.white}
+                  color={alertIconTintColor || Colors.white}
                   size="large"
                 />
               ) : (
@@ -218,7 +238,7 @@ class RNAlerter extends Component {
                     style={[styles.imageStyle, { width: alertIconSize }]}
                     pose={alertAnimatedIcon ? (isBig ? 'big' : 'normal') : 'normal'}>
                     <Image
-                      style={[styles.imageMainStyle, alertIcoTintColor && { tintColor: alertIcoTintColor }]}
+                      style={[styles.imageMainStyle, alertIconTintColor && { tintColor: alertIconTintColor }]}
                       resizeMode="center"
                       source={alertIconSource}
                     />
@@ -265,7 +285,7 @@ RNAlerter.propTypes = {
   alertLoadingVisible: PropTypes.bool,
   alertIconSource: Image.propTypes.source,
   alertIconSize: PropTypes.number,
-  alertIcoTintColor: PropTypes.string,
+  alertIconTintColor: PropTypes.string,
   alertAnimatedIcon: PropTypes.bool,
   alertTitle: PropTypes.string,
   alertTitleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
@@ -281,6 +301,8 @@ RNAlerter.propTypes = {
   onPressAlert: PropTypes.func,
   onPressButtonOne: PropTypes.func,
   onPressButtonTwo: PropTypes.func,
+  onAlertShow: PropTypes.func,
+  onAlertHide: PropTypes.func,
 };
 
 RNAlerter.defaultProps = {
@@ -300,6 +322,8 @@ RNAlerter.defaultProps = {
   onPressAlert: () => {},
   onPressButtonOne: () => {},
   onPressButtonTwo: () => {},
+  onAlertShow: () => {},
+  onAlertHide: () => {},
 };
 
 export default RNAlerter;
