@@ -205,6 +205,7 @@ class RNAlerter extends Component {
     const { isBig, isVisible, alertHeight } = this.state;
 
     const {
+      alertBGContainerStyle,
       alertBGColor,
       alertIconVisible,
       alertLoadingVisible,
@@ -224,7 +225,7 @@ class RNAlerter extends Component {
     return (
       <TouchableWithoutFeedback onPress={this.onPressAlertView} onLayout={this.onLayoutView}>
         <Modal style={styles.container} pose={isVisible ? 'enter' : 'exit'} y={isVisible ? 0 : alertHeight}>
-          <View style={[styles.alertBGContainer, { backgroundColor: alertBGColor }]}>
+          <View style={[styles.alertBGContainer, { backgroundColor: alertBGColor }, alertBGContainerStyle]}>
             <View style={styles.alertMainContainer}>
               {alertLoadingVisible ? (
                 <ActivityIndicator
@@ -280,6 +281,7 @@ class RNAlerter extends Component {
 }
 
 RNAlerter.propTypes = {
+  alertBGContainerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
   alertBGColor: PropTypes.string,
   alertIconVisible: PropTypes.bool,
   alertLoadingVisible: PropTypes.bool,
@@ -306,6 +308,7 @@ RNAlerter.propTypes = {
 };
 
 RNAlerter.defaultProps = {
+  alertBGContainerStyle: {},
   alertBGColor: Colors.grayShadeA9,
   alertIconVisible: true,
   alertLoadingVisible: false,
