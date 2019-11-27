@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.8
 
-import * as React from 'react';
+import * as React from "react";
 
 import Alert = RNAlert.Alert;
 export = Alert;
@@ -18,13 +18,14 @@ declare namespace RNAlert {
     alertIconSource?: any;
     alertIconSize?: Number;
     alertIconTintColor?: String;
+    alertIconResizeMode?: ["center", "contain", "cover", "repeat", "stretch"];
     alertAnimatedIcon?: Boolean;
     alertTitle?: String;
     alertTitleStyle?: StyleSheet;
     alertMessage?: String;
     alertMessageStyle?: StyleSheet;
     alertButtonTitle?: Array<String>;
-    alertButtonPosition?: ['start', 'center', 'end'];
+    alertButtonPosition?: ["start", "center", "end"];
     alertButtonStyle?: StyleSheet;
     alertButtonTextStyle?: StyleSheet;
     alertAutoHide?: Boolean;
