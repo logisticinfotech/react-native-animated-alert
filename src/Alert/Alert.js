@@ -5,7 +5,7 @@ import {
   Image,
   ActivityIndicator,
   TouchableWithoutFeedback,
-  TouchableHighlight
+  TouchableHighlight,
 } from "react-native";
 
 //Lib
@@ -25,9 +25,9 @@ let Modal = posed.View({
         ease: "linear",
         duration: 500,
         type: "spring",
-        stiffness: 30
-      }
-    }
+        stiffness: 30,
+      },
+    },
   },
   exit: {
     y: ({ y }) => -1 * y,
@@ -36,11 +36,11 @@ let Modal = posed.View({
         ease: "linear",
         duration: 500,
         type: "spring",
-        stiffness: 30
-      }
-    }
+        stiffness: 30,
+      },
+    },
   },
-  props: { y: 500 }
+  props: { y: 500 },
 });
 
 const Circle = posed.View({
@@ -49,17 +49,17 @@ const Circle = posed.View({
     transition: {
       type: "spring",
       stiffness: 200,
-      damping: 1
-    }
+      damping: 1,
+    },
   },
   normal: {
     scale: 1.0,
     transition: {
       type: "spring",
       stiffness: 200,
-      damping: 1
-    }
-  }
+      damping: 1,
+    },
+  },
 });
 
 let context = null;
@@ -71,16 +71,16 @@ class RNAlerter extends Component {
     this.state = {
       isBig: false,
       alertHeight: Responsive.heightPercentageToDP("100%"),
-      isVisible: false
+      isVisible: false,
     };
   }
 
   //Mics Method
-  onLayoutView = event => {
+  onLayoutView = (event) => {
     var { height } = event.nativeEvent.layout;
     this.setState({ alertHeight: height });
   };
-  getPosition = buttonPosition => {
+  getPosition = (buttonPosition) => {
     let position = "";
     switch (buttonPosition) {
       case Constants.start:
@@ -122,12 +122,13 @@ class RNAlerter extends Component {
       alertAutoHideDuration,
       alertLoadingVisible,
       alertAnimatedIcon,
+      alertAnimatedIconDuration,
       alertButtonTitle,
-      onShowAlert
+      onShowAlert,
     } = this.props;
     this.setState(
       {
-        isVisible: true
+        isVisible: true,
       },
       () => {
         if (onShowAlert) onShowAlert();
@@ -158,7 +159,7 @@ class RNAlerter extends Component {
       }
       this.intervalIcon = setInterval(() => {
         this.onChangeSize();
-      }, Constants.animatedLogoDuration);
+      }, alertAnimatedIconDuration);
     }
   };
 
@@ -166,7 +167,7 @@ class RNAlerter extends Component {
     const { onHideAlert } = this.props;
     this.setState(
       {
-        isVisible: false
+        isVisible: false,
       },
       () => {
         if (onHideAlert) onHideAlert();
@@ -181,8 +182,8 @@ class RNAlerter extends Component {
   };
 
   onChangeSize = () => {
-    this.setState(prevState => ({
-      isBig: !prevState.isBig
+    this.setState((prevState) => ({
+      isBig: !prevState.isBig,
     }));
   };
 
@@ -192,7 +193,7 @@ class RNAlerter extends Component {
       onPressAlert,
       alertLoadingVisible,
       alertTapToDismiss,
-      alertTitle
+      alertTitle,
     } = this.props;
     if (alertTapToDismiss && !alertLoadingVisible && alertTitle.length <= 0) {
       this.onHideAlert();
@@ -238,7 +239,7 @@ class RNAlerter extends Component {
       alertButtonTitle,
       alertButtonPosition,
       alertButtonStyle,
-      alertButtonTextStyle
+      alertButtonTextStyle,
     } = this.props;
     return (
       <TouchableWithoutFeedback
@@ -254,7 +255,7 @@ class RNAlerter extends Component {
             style={[
               styles.alertBGContainer,
               { backgroundColor: alertBGColor },
-              alertBGContainerStyle
+              alertBGContainerStyle,
             ]}
           >
             <View style={styles.alertMainContainer}>
@@ -275,7 +276,7 @@ class RNAlerter extends Component {
                     <Image
                       style={[
                         styles.imageMainStyle,
-                        alertIconTintColor && { tintColor: alertIconTintColor }
+                        alertIconTintColor && { tintColor: alertIconTintColor },
                       ]}
                       resizeMode={alertIconResizeMode}
                       source={alertIconSource}
@@ -303,7 +304,7 @@ class RNAlerter extends Component {
                 <View
                   style={[
                     styles.alertButtonContainer,
-                    { justifyContent: this.getPosition(alertButtonPosition) }
+                    { justifyContent: this.getPosition(alertButtonPosition) },
                   ]}
                 >
                   <TouchableHighlight
@@ -314,7 +315,7 @@ class RNAlerter extends Component {
                     <Text
                       style={[
                         styles.alertButtonTextStyle,
-                        alertButtonTextStyle
+                        alertButtonTextStyle,
                       ]}
                     >
                       {alertButtonTitle[0]}
@@ -330,7 +331,7 @@ class RNAlerter extends Component {
                       <Text
                         style={[
                           styles.alertButtonTextStyle,
-                          alertButtonTextStyle
+                          alertButtonTextStyle,
                         ]}
                       >
                         {alertButtonTitle[1]}
@@ -350,7 +351,7 @@ RNAlerter.propTypes = {
   alertBGContainerStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.number
+    PropTypes.number,
   ]),
   alertBGColor: PropTypes.string,
   alertIconVisible: PropTypes.bool,
@@ -363,36 +364,37 @@ RNAlerter.propTypes = {
     Constants.contain,
     Constants.cover,
     Constants.repeat,
-    Constants.stretch
+    Constants.stretch,
   ]),
   alertAnimatedIcon: PropTypes.bool,
+  alertAnimatedIconDuration: PropTypes.number,
   alertTitle: PropTypes.string,
   alertTitleStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.number
+    PropTypes.number,
   ]),
   alertMessage: PropTypes.string,
   alertMessageStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.number
+    PropTypes.number,
   ]),
   alertButtonTitle: PropTypes.array,
   alertButtonPosition: PropTypes.oneOf([
     Constants.start,
     Constants.center,
-    Constants.end
+    Constants.end,
   ]),
   alertButtonStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.number
+    PropTypes.number,
   ]),
   alertButtonTextStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
-    PropTypes.number
+    PropTypes.number,
   ]),
   alertAutoHide: PropTypes.bool,
   alertAutoHideDuration: PropTypes.number,
@@ -401,7 +403,7 @@ RNAlerter.propTypes = {
   onPressButtonOne: PropTypes.func,
   onPressButtonTwo: PropTypes.func,
   onAlertShow: PropTypes.func,
-  onAlertHide: PropTypes.func
+  onAlertHide: PropTypes.func,
 };
 
 RNAlerter.defaultProps = {
@@ -416,6 +418,7 @@ RNAlerter.defaultProps = {
   alertIconTintColor: Colors.white,
   alertIconResizeMode: Constants.center,
   alertAnimatedIcon: false,
+  alertAnimatedIconDuration: Constants.animatedLogoDuration,
   alertButtonTitle: [],
   alertButtonPosition: Constants.end,
   alertAutoHide: true,
@@ -425,7 +428,7 @@ RNAlerter.defaultProps = {
   onPressButtonOne: () => {},
   onPressButtonTwo: () => {},
   onAlertShow: () => {},
-  onAlertHide: () => {}
+  onAlertHide: () => {},
 };
 
 export default RNAlerter;

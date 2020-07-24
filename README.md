@@ -1,5 +1,5 @@
 <p align="left">
-    <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img alt="npm version" src="https://img.shields.io/badge/npm-v1.0.5-green.svg"></a>
+    <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img alt="npm version" src="https://img.shields.io/badge/npm-v1.0.6-green.svg"></a>
     <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"><img src="https://img.shields.io/badge/downloads-%3E1K-yellow.svg"></a>
     <a href="https://www.npmjs.com/package/@logisticinfotech/react-native-animated-alert"<><img src="https://img.shields.io/badge/license-MIT-orange.svg"></a>
 </p>
@@ -71,6 +71,7 @@ render(){
 | alertIconTintColor    | '#FFFFFF' | `string`                                                  | color of the icon if source has transparent pixel.                                                                          |
 | alertIconResizeMode   | 'center'  | `enum of ['center','contain','cover','repeat','stretch']` | Image resize mode.                                                                                                          |
 | alertAnimatedIcon     | true      | `bool`                                                    | Icon of alert will be show animated.                                                                                        |
+| alertAnimatedIconDuration     | 200      | `number`                                                    | Animation time duration of alert icon.                                                                                        |
 | alertTitle            | ''        | `string`                                                  | Display title of the alter.                                                                                                 |
 | alertTitleStyle       | InLibrary | `style`                                                   | Style of alter title display.                                                                                               |
 | alertMessage          | ''        | `string`                                                  | Display message of the alter.                                                                                               |

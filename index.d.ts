@@ -1,9 +1,3 @@
-// Type definitions for react-native-modal-dropdown 0.6
-// Project: https://github.com/sohobloo/react-native-modal-dropdown
-// Definitions by: Carlos Li <https://github.com/echoulen>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
-
 import * as React from "react";
 
 import Alert = RNAlert.Alert;
@@ -20,6 +14,7 @@ declare namespace RNAlert {
     alertIconTintColor?: String;
     alertIconResizeMode?: ["center", "contain", "cover", "repeat", "stretch"];
     alertAnimatedIcon?: Boolean;
+    alertAnimatedIconDuration?: Number;
     alertTitle?: String;
     alertTitleStyle?: StyleSheet;
     alertMessage?: String;
