@@ -262,7 +262,11 @@ class RNAlerter extends Component {
               {alertLoadingVisible ? (
                 <ActivityIndicator
                   style={[styles.imageStyle, { width: alertIconSize }]}
-                  color={alertIconTintColor || Colors.white}
+                  color={
+                    alertIconTintColor !== ""
+                      ? alertIconTintColor
+                      : Colors.white
+                  }
                   size="large"
                 />
               ) : (
@@ -276,7 +280,9 @@ class RNAlerter extends Component {
                     <Image
                       style={[
                         styles.imageMainStyle,
-                        alertIconTintColor && { tintColor: alertIconTintColor },
+                        alertIconTintColor !== "" && {
+                          tintColor: alertIconTintColor,
+                        },
                       ]}
                       resizeMode={alertIconResizeMode}
                       source={alertIconSource}
@@ -415,7 +421,7 @@ RNAlerter.defaultProps = {
   alertMessage: "",
   alertIconSource: Images.bell,
   alertIconSize: 24,
-  alertIconTintColor: Colors.white,
+  alertIconTintColor: "",
   alertIconResizeMode: Constants.center,
   alertAnimatedIcon: false,
   alertAnimatedIconDuration: Constants.animatedLogoDuration,
