@@ -124,14 +124,14 @@ class RNAlerter extends Component {
       alertAnimatedIcon,
       alertAnimatedIconDuration,
       alertButtonTitle,
-      onShowAlert,
+      onAlertShow,
     } = this.props;
     this.setState(
       {
         isVisible: true,
       },
       () => {
-        if (onShowAlert) onShowAlert();
+        if (onAlertShow) onAlertShow();
       }
     );
 
@@ -164,13 +164,13 @@ class RNAlerter extends Component {
   };
 
   onHideAlert = () => {
-    const { onHideAlert } = this.props;
+    const { onAlertHide } = this.props;
     this.setState(
       {
         isVisible: false,
       },
       () => {
-        if (onHideAlert) onHideAlert();
+        if (onAlertHide) onAlertHide();
       }
     );
     if (this.interval) {
