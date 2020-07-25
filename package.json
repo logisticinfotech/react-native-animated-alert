@@ -1,6 +1,6 @@
 {
   "name": "@logisticinfotech/react-native-animated-alert",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React Native Animated Alert Library",
   "main": "index.js",
   "types": "index.d.ts",
@@ -32,7 +32,8 @@
   "homepage": "https://github.com/logisticinfotech/react-native-animated-alert#readme",
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react-native-pose": "^0.9.1"
+    "react-native-pose": "^0.9.1",
+    "react-native-status-bar-height": "^2.5.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.13",
