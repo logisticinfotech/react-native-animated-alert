@@ -87,18 +87,15 @@ class RNAlerter extends Component {
 
   componentDidUpdate(prevProps) {
     const { alertTitle, alertMessage } = this.props;
-    let alertTitleNew = this.state.alertTitle;
-    let alertMessageNew = this.state.alertMessage;
-    if (alertTitle !== prevProps.alertTitle) {
-      alertTitleNew = alertTitle;
+    if (
+      alertTitle !== prevProps.alertTitle ||
+      alertMessage !== prevProps.alertMessage
+    ) {
+      this.setState({
+        alertTitle,
+        alertMessage,
+      });
     }
-    if (alertMessage !== prevProps.alertMessage) {
-      alertMessageNew = alertMessage;
-    }
-    this.setState({
-      alertTitle: alertTitleNew,
-      alertMessage: alertMessageNew,
-    });
   }
 
   //Mics Method
