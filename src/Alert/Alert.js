@@ -70,9 +70,35 @@ class RNAlerter extends Component {
     context = this;
     this.state = {
       isBig: false,
+      alertTitle: "",
+      alertMessage: "",
       alertHeight: Responsive.heightPercentageToDP("100%"),
       isVisible: false,
     };
+  }
+
+  componentDidMount() {
+    const { alertTitle, alertMessage } = this.props;
+    this.setState({
+      alertTitle,
+      alertMessage,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { alertTitle, alertMessage } = this.props;
+    let alertTitleNew = this.state.alertTitle;
+    let alertMessageNew = this.state.alertMessage;
+    if (alertTitle !== prevProps.alertTitle) {
+      alertTitleNew = alertTitle;
+    }
+    if (alertMessage !== prevProps.alertMessage) {
+      alertMessageNew = alertMessage;
+    }
+    this.setState({
+      alertTitle: alertTitleNew,
+      alertMessage: alertMessageNew,
+    });
   }
 
   //Mics Method
@@ -100,6 +126,20 @@ class RNAlerter extends Component {
   static showAlert = () => {
     if (context) {
       context.onShowAlert();
+    }
+  };
+
+  static showAlertWithOption = (title, message) => {
+    if (context) {
+      context.setState(
+        {
+          alertTitle: title,
+          alertMessage: message,
+        },
+        () => {
+          context.onShowAlert();
+        }
+      );
     }
   };
 
@@ -189,12 +229,8 @@ class RNAlerter extends Component {
 
   //onPress Method
   onPressAlertView = () => {
-    const {
-      onPressAlert,
-      alertLoadingVisible,
-      alertTapToDismiss,
-      alertTitle,
-    } = this.props;
+    const { onPressAlert, alertLoadingVisible, alertTapToDismiss } = this.props;
+    const { alertTitle } = this.state;
     if (alertTapToDismiss && !alertLoadingVisible && alertTitle.length <= 0) {
       this.onHideAlert();
     } else if (!alertLoadingVisible && alertTitle.length <= 0 && onPressAlert) {
@@ -220,7 +256,13 @@ class RNAlerter extends Component {
 
   //Render Method
   render() {
-    const { isBig, isVisible, alertHeight } = this.state;
+    const {
+      isBig,
+      isVisible,
+      alertTitle,
+      alertMessage,
+      alertHeight,
+    } = this.state;
 
     const {
       alertBGContainerStyle,
@@ -232,9 +274,7 @@ class RNAlerter extends Component {
       alertAnimatedIcon,
       alertIconTintColor,
       alertIconResizeMode,
-      alertTitle,
       alertTitleStyle,
-      alertMessage,
       alertMessageStyle,
       alertButtonTitle,
       alertButtonPosition,
