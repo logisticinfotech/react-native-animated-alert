@@ -33,7 +33,8 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react-native-pose": "^0.9.1",
-    "react-native-status-bar-height": "^2.5.0"
+    "react-native-status-bar-height": "^2.5.0",
+    "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.13",
