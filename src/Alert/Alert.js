@@ -15,6 +15,7 @@ import posed from "react-native-pose";
 //Mics Constants
 import { styles } from "./AlertStyle";
 import { Colors, Constants, Images, Responsive } from "../Theme";
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 //Pose View
 let Modal = posed.View({
@@ -25,7 +26,7 @@ let Modal = posed.View({
         ease: "linear",
         duration: 500,
         type: "spring",
-        stiffness: 30,
+        // stiffness: 30,
       },
     },
   },
@@ -36,7 +37,7 @@ let Modal = posed.View({
         ease: "linear",
         duration: 500,
         type: "spring",
-        stiffness: 30,
+        // stiffness: 30,
       },
     },
   },
@@ -227,10 +228,10 @@ class RNAlerter extends Component {
   //onPress Method
   onPressAlertView = () => {
     const { onPressAlert, alertLoadingVisible, alertTapToDismiss } = this.props;
-    const { alertTitle } = this.state;
-    if (alertTapToDismiss && !alertLoadingVisible && alertTitle.length <= 0) {
+    // const { alertTitle } = this.state;
+    if (alertTapToDismiss && !alertLoadingVisible) {
       this.onHideAlert();
-    } else if (!alertLoadingVisible && alertTitle.length <= 0 && onPressAlert) {
+    } else if (!alertLoadingVisible && onPressAlert) {
       onPressAlert();
     }
   };
@@ -267,6 +268,7 @@ class RNAlerter extends Component {
       alertIconVisible,
       alertLoadingVisible,
       alertIconSource,
+      alertVectorIcon,
       alertIconSize,
       alertAnimatedIcon,
       alertIconTintColor,
@@ -313,17 +315,28 @@ class RNAlerter extends Component {
                     pose={
                       alertAnimatedIcon ? (isBig ? "big" : "normal") : "normal"
                     }
-                  >
-                    <Image
-                      style={[
-                        styles.imageMainStyle,
-                        alertIconTintColor !== "" && {
-                          tintColor: alertIconTintColor,
-                        },
-                      ]}
-                      resizeMode={alertIconResizeMode}
-                      source={alertIconSource}
+                  >{
+                    alertVectorIcon ?
+                    <Icon 
+                      name={alertVectorIcon.name || "check"} 
+                      size={alertVectorIcon.size || 25} 
+                      color={alertVectorIcon.color || "white"} 
+                      style={{ 
+                        width: alertVectorIcon.size || 25, 
+                        height: alertVectorIcon.size || 25
+                      }} 
                     />
+                    : <Image
+                    style={[
+                      styles.imageMainStyle,
+                      alertIconTintColor !== "" && {
+                        tintColor: alertIconTintColor,
+                      },
+                    ]}
+                    resizeMode={alertIconResizeMode}
+                    source={alertIconSource}
+                  />
+                  } 
                   </Circle>
                 )
               )}
@@ -400,6 +413,7 @@ RNAlerter.propTypes = {
   alertIconVisible: PropTypes.bool,
   alertLoadingVisible: PropTypes.bool,
   alertIconSource: Image.propTypes.source,
+  alertVectorIcon: PropTypes.object,
   alertIconSize: PropTypes.number,
   alertIconTintColor: PropTypes.string,
   alertIconResizeMode: PropTypes.oneOf([
@@ -457,6 +471,7 @@ RNAlerter.defaultProps = {
   alertTitle: "",
   alertMessage: "",
   alertIconSource: Images.bell,
+  alertVectorIcon: null,
   alertIconSize: 24,
   alertIconTintColor: "",
   alertIconResizeMode: Constants.center,
